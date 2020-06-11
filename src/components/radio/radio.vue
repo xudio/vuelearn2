@@ -1,13 +1,19 @@
 <template>
-  <label class="el-radio">
-      <span class="input-radio" class=""></span>
-      <input class="el-input" type="radio" :name="name" :label="label" :value="value" />
-      {{ title }}
+  <label class="el-radio" :class="[{'blue': checked}, {'border': border}, {[size]: border}, {'disabled': disabled}]" 
+    :border="border"
+    :size="size">
+    <span class="input-radio" :class="[{'radio-blue': checked}, {'radio-disabled': disabled}]"></span>
+    <input class="el-input" type="radio" 
+    :name="name" 
+    :label="label" 
+    :value="value"
+    :disabled="disabled"
+    @input="input" />
+    {{ title }}
   </label>
 </template>
 
 <script>
-
 export default {
   name: "Vradio",
   props: {
@@ -35,7 +41,17 @@ export default {
     }
   },
   methods: {
-    
+    input: function() {
+      this.$emit('input', this.label);
+    }
+  },
+  computed: {
+    checked: function() {
+      if (this.label == this.value) {
+        return true;
+      }
+      return false;
+    }
   }
 };
 </script>
@@ -50,10 +66,14 @@ export default {
   color: $mainTextColor;
   cursor: pointer;
 }
+
 .el-input {
-  outline: none;
-  -webkit-appearance: none;
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: 0;
 }
+
 .input-radio {
   position: relative;
   display: inline-block;
@@ -63,15 +83,18 @@ export default {
   border: 1px solid $mainBorderColor;
   border-radius: 50%;
   vertical-align: middle;
-  margin-top: -2px;
+  margin-top: -3px;
   margin-left: 10px;
 }
+
 .input-radio:hover {
   border: 1px solid $mainColor;
 }
+
 .blue {
   color: $mainColor;
 }
+
 .radio-blue {
   position: relative;
   display: inline-block;
@@ -79,61 +102,65 @@ export default {
   border: 1px solid $mainColor;
   border-radius: 50%;
 }
+
 .radio-blue::after {
   position: absolute;
   width: 4px;
   height: 4px;
   top: 5px;
   left: 5px;
-  content: "";
+  content: '';
   background: white;
   border-radius: 50%;
 }
+
 .border {
   border: 1px solid $mainBorderColor;
   border-radius: 4px;
+  padding: 10px 15px 10px 5px;
 }
+
 .blue.border {
   border-color: $mainColor;
 }
-.medium {
-  width: 105px;
-  height: 40px;
-  line-height: 42px;
-}
+
 .small {
-  width: 105px;
-  height: 35px;
-  line-height: 37px;
+  padding: 8px 15px 8px 5px;
 }
+
 .mini {
-  width: 90px;
-  height: 30px;
-  line-height: 32px;
+  padding: 6px 13px 6px 3px;
   font-size: 12px;
 }
+
 .mini .input-radio {
   width: 12px;
   height: 12px;
 }
+
 .mini .radio-blue::after {
   top: 4px;
   left: 4px;
 }
+
 .disabled {
   color: $disabledColor;
   cursor: not-allowed;
 }
+
 .disabled.border {
   border: 1px solid $disabledBorderColor;
 }
+
 .radio-disabled {
   background: #f5f7fa;
   border: 1px solid #e4e7ed;
 }
+
 .radio-disabled:hover {
   border: 1px solid #e4e7ed;
 }
+
 .radio-disabled.radio-blue::after {
   background: $disabledColor;
 }
