@@ -3,7 +3,10 @@
         <Vradio 
         title="备选项"
         label="1"
-        v-model="radioEn">
+        v-model="radioEn"
+        :border=true
+        size="small"
+        @change="handleRadioChecked">
         </Vradio>
 
         <Vradio
@@ -27,6 +30,11 @@ export default {
     data() {
         return {
            radioEn: "2"
+        }
+    },
+    methods: {
+        handleRadioChecked: function(val) {
+            console.log(val);
         }
     },
     components: {

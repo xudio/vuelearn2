@@ -1,5 +1,5 @@
 <template>
-  <label class="el-radio" :class="[{'blue': checked}, {'border': border}, {[size]: border}, {'disabled': disabled}]" 
+  <label class="el-radio" :class="[{'blue': checked}, {'border': border}, {[sizeName]: border}, {'disabled': disabled}]" 
     :border="border"
     :size="size">
     <span class="input-radio" :class="[{'radio-blue': checked}, {'radio-disabled': disabled}]"></span>
@@ -16,6 +16,10 @@
 <script>
 export default {
   name: "Vradio",
+  model: {
+    prop: 'value',
+    event: 'change'
+  },
   props: {
     title: {
       type: String,
@@ -40,9 +44,14 @@ export default {
       default: "middle"
     }
   },
+  data () {
+    return {
+      parent: this.$parent
+    }
+  },
   methods: {
     input: function() {
-      this.$emit('input', this.label);
+      this.$emit('change', this.label);
     }
   },
   computed: {
@@ -51,6 +60,9 @@ export default {
         return true;
       }
       return false;
+    },
+    sizeName: function() {
+      return this.parent.size || this.size;
     }
   }
 };

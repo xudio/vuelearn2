@@ -1,22 +1,31 @@
 <template>
   <label class="el-radio-button">
-      <span class="button-span" :class="[{'disabled':isDisabled}, {'checked': checked}]">{{ label }}</span>
+      <span class="button-span" :class="[{'disabled':isDisabled}, {'checked': checked}, [parent.size]]"
+      :style="checked ? activeStyle : null">
+        {{ label }}
+      </span>
       <input class="el-input"
       type="radio"
       :name="name"
-      :disabled="isDisabled">
+      :disabled="isDisabled"
+      @input="input">
   </label>
 </template>
 
 <script>
 export default {
   name: "VradioButton",
+  model: {
+    prop: 'value',
+    event: 'change'
+  },
   props: {
     label: {
 
     },
     name: {
-      type: String
+      type: String,
+      default: 'radio'
     },
     disabled: {
       type: Boolean,
@@ -29,7 +38,9 @@ export default {
       }
   },
   methods: {
-
+    input: function() {
+      this.$emit('change', this.label);
+    }
   },
   computed: {
       checked: function() {
@@ -43,6 +54,13 @@ export default {
                return true;
           }
           return false;
+      },
+      activeStyle: function() {
+        return {
+          backgroundColor: this.parent.fill,
+          color: this.parent.textColor,
+          borderColor: this.parent.fill
+        }
       }
   }
 };
@@ -96,4 +114,5 @@ export default {
   color: $disabledColor;
   border-color: $disabledBorderColor;
 }
+
 </style>
