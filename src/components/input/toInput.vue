@@ -1,5 +1,10 @@
 <template>
-  <Vinput v-model="input"></Vinput>
+  <Vinput v-model="input" 
+  :clearable=true 
+  :showPassword=true 
+  type="text"
+  maxlength=10
+  ></Vinput>
 </template>
 
 <script>
