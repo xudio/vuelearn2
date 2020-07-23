@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     input: function() {
-      this.$emit('change', this.label);
+      this.$parent.$emit('change', this.label);
     }
   },
   computed: {

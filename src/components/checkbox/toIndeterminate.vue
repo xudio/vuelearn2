@@ -32,7 +32,9 @@ export default {
       this.isIndeterminate = false;
     },
     handleCheckedChange: function(val) {
-      console.log(val);
+      if (val.length > 0 && val.length < group.length) {
+        this.isIndeterminate = true;
+      }
     }
   }
 };

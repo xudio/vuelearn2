@@ -21,6 +21,7 @@ export default {
   },
   methods: {
     handleRadioButtonChecked: function(val) {
+      this.radioGroup1 = val;
       console.log(val);
     }
   },
@@ -30,7 +31,7 @@ export default {
   }
 };
 </script>
-<style scoped lang="stylus">
+<style lang="stylus">
 .el-radio-group .el-radio-button:first-child .button-span {
   border-radius: 4px 0 0 4px;
   border-left: 1px solid $mainBorderColor;

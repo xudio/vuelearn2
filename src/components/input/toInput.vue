@@ -3,7 +3,7 @@
   :clearable=true 
   :showPassword=true 
   type="text"
-  maxlength=10
+  :maxlength=10
   ></Vinput>
 </template>
 

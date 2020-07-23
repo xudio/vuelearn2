@@ -5,7 +5,8 @@
     <router-link to='/checkbox'>To checkbox component</router-link><br>
     <router-link to='/checkboxGroup'>To checkboxGroup component</router-link><br>
     <router-link to='/indeterminate'>To indeterminate component</router-link><br>
-    <router-link to='/input'>To input component</router-link>
+    <router-link to='/input'>To input component</router-link><br>
+    <router-link to='/inputNumber'>To inputNumber component</router-link><br>
     
     <router-view></router-view>
   </div>

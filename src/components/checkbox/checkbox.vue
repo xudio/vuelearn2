@@ -79,7 +79,7 @@ export default {
         } else {
           value.push(this.label);
         }
-        this.$emit("change", value);
+        this.parent.$emit("change", value);
       } else {
         this.$emit("change", !this.value);
       }

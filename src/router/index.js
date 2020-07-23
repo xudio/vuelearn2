@@ -6,6 +6,7 @@ import Tocheckbox from '../components/checkbox/toCheckbox.vue'
 import TocheckboxGroup from '../components/checkbox/toCheckboxGroup.vue'
 import ToIndeterminate from '../components/checkbox/toIndeterminate.vue'
 import Toinput from '../components/input/toInput.vue'
+import ToinputNumber from '../components/input/toInputNumber.vue'
 
 Vue.use(Router);
 
@@ -40,6 +41,11 @@ export default new Router({
             path: '/input',
             name: 'input',
             component: Toinput
+        },
+        {
+            path: '/inputNumber',
+            name: 'input',
+            component: ToinputNumber
         }
     ]
 })

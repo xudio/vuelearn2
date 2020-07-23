@@ -1,24 +1,23 @@
 <template>
-  <div 
+  <div
     :class="[{'el-input': !isTextarea}, {'el-textarea': isTextarea}]"
-    @mouseenter="enter" 
+    @mouseenter="enter"
     @mouseleave="leave"
   >
     <!-- textarea 文本域 -->
-    <textarea 
-      v-if="isTextarea" 
+    <textarea
+      v-if="isTextarea"
       :showWordLimit="showWordLimit"
       :value="value"
-      class="textarea" 
+      class="textarea"
       :disabled="disabled"
       :maxlength="maxlength"
       :minlength="minlength"
-      :rows="autosize" 
-      cols="50" 
+      :rows="autosize"
+      cols="50"
       :autofocus="autofocus"
       @input="input"
-    >
-    </textarea>
+    ></textarea>
     <!-- input 输入框 -->
     <input
       v-else
@@ -37,10 +36,10 @@
       @input="input"
     />
     <!-- 清除图标 -->
-    <span 
-      v-if="isClearable" 
+    <span
+      v-if="isClearable"
       :class="[{'right-25': suffixIcon}]"
-      class="icon-cancel-circle icon-suffix-common" 
+      class="icon-cancel-circle icon-suffix-common"
       @click="clear"
     ></span>
     <!-- 眼睛图标 -->
@@ -51,23 +50,11 @@
       @click="changeEyeType"
     ></span>
     <!-- 前缀图标 -->
-    <span
-      v-if="prefixIcon"
-      class="icon-prefix-common"
-      :class="[prefixIcon]"
-    ></span>
+    <span v-if="prefixIcon" class="icon-prefix-common" :class="[prefixIcon]"></span>
     <!-- 后缀图标 -->
-    <span
-      v-if="suffixIcon"
-      class="icon-suffix-common"
-      :class="[suffixIcon]"
-    ></span>
+    <span v-if="suffixIcon" class="icon-suffix-common" :class="[suffixIcon]"></span>
     <!-- 字数限制 -->
-    <span
-      v-if="showWordLimit"
-      class="showWordLimit">
-      {{ valueLength }}/{{maxlength}}
-    </span>
+    <span v-if="showWordLimit" class="showWordLimit">{{ valueLength }}/{{maxlength}}</span>
   </div>
 </template>
 <script>
@@ -157,9 +144,9 @@ export default {
   },
   computed: {
     isTextarea: function() {
-      if (this.type === 'textarea') {
+      if (this.type === "textarea") {
         return true;
-      } 
+      }
       return false;
     },
     isClearable: function() {
@@ -174,7 +161,7 @@ export default {
     },
     isShowPassword: function() {
       if (this.showPassword) {
-        if (this.value != '') {
+        if (this.value != "") {
           return true;
         }
       }
@@ -199,7 +186,11 @@ export default {
       return false;
     },
     paddingRight50: function() {
-      if ((this.suffixIcon && this.showPassword) || (this.clearable && this.suffixIcon) || (this.clearable && this.showPassword)) {
+      if (
+        (this.suffixIcon && this.showPassword) ||
+        (this.clearable && this.suffixIcon) ||
+        (this.clearable && this.showPassword)
+      ) {
         return true;
       }
       return false;
@@ -229,7 +220,7 @@ export default {
       this.isFocus = true;
     },
     changeEyeType: function() {
-      this.isType = this.isType === 'text' ? 'password' : 'text';
+      this.isType = this.isType === "text" ? "password" : "text";
       this.isFocus = true;
     }
   }
@@ -296,16 +287,18 @@ export default {
   text-align: center;
   line-height: 40px;
 }
+
 .icon-prefix-common {
   position: absolute;
   width: 25px;
   height: 40px;
-  left : 0;
+  left: 0;
   color: $disabledColor;
   cursor: pointer;
   text-align: center;
   line-height: 40px;
 }
+
 .showWordLimit {
   position: absolute;
   height: 40px;
@@ -320,12 +313,15 @@ export default {
 .right-25 {
   right: 25px;
 }
+
 .padding-left-25 {
   padding-left: 25px;
 }
+
 .padding-right-25 {
   padding-right: 25px;
 }
+
 .padding-right-50 {
   padding-right: 50px;
 }
