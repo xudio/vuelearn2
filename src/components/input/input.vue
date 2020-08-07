@@ -7,15 +7,11 @@
     <!-- textarea 文本域 -->
     <textarea
       v-if="isTextarea"
-      :showWordLimit="showWordLimit"
       :value="value"
       class="textarea"
       :disabled="disabled"
       :maxlength="maxlength"
-      :minlength="minlength"
-      :rows="autosize"
       cols="50"
-      :autofocus="autofocus"
       @input="input"
     ></textarea>
     <!-- input 输入框 -->
@@ -25,12 +21,9 @@
       :class="[{'focus': isFocus}, {'disabled': disabled}, {'padding-left-25': paddingLeft25}, {'padding-right-25': paddingRight25}, {'padding-right-50': paddingRight50}]"
       :value="value"
       :type="isType"
-      :showWordLimit="showWordLimit"
       :placeholder="placeholder"
       :maxlength="maxlength"
-      :minlength="minlength"
       :disabled="disabled"
-      :clearable="clearable"
       @focus="focus"
       @blur="blur"
       @input="input"
@@ -144,10 +137,7 @@ export default {
   },
   computed: {
     isTextarea: function() {
-      if (this.type === "textarea") {
-        return true;
-      }
-      return false;
+      return this.type === "textarea";
     },
     isClearable: function() {
       if (this.clearable) {
@@ -168,22 +158,24 @@ export default {
       return false;
     },
     right25: function() {
-      if (this.suffixIcon || this.clearable) {
-        return true;
-      }
-      return false;
+      return this.suffixIcon || this.clearable;
     },
     paddingLeft25: function() {
-      if (this.prefixIcon) {
-        return true;
-      }
-      return false;
+      return this.prefixIcon
     },
+    // TODO 
+    // getPaddingClass:function(){
+    //   let classArr = [];
+    //   if(this.prefixIcon){
+    //     classArr.push("padding-right" + 25 * 1)
+    //   }
+    //   if(){
+
+    //   }
+    //   return ""
+    // },
     paddingRight25: function() {
-      if (this.suffixIcon) {
-        return true;
-      }
-      return false;
+      return this.suffixIcon;
     },
     paddingRight50: function() {
       if (

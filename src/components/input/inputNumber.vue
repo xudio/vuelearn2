@@ -133,7 +133,6 @@ export default {
     blur: function(event) {
       //失焦后发送数据
       let value = this.financial(event.target.value);
-      //event.target.value = value;
       this.$emit("change", value);
     },
     deClick: function() {

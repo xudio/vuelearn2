@@ -7,6 +7,7 @@
     <router-link to='/indeterminate'>To indeterminate component</router-link><br>
     <router-link to='/input'>To input component</router-link><br>
     <router-link to='/inputNumber'>To inputNumber component</router-link><br>
+    <router-link to='/select'>To select component</router-link><br>
     
     <router-view></router-view>
   </div>

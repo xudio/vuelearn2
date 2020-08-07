@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?68zr1t');
-  src:  url('fonts/icomoon.eot?68zr1t#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?68zr1t') format('truetype'),
-    url('fonts/icomoon.woff?68zr1t') format('woff'),
-    url('fonts/icomoon.svg?68zr1t#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?4clkd');
+  src:  url('fonts/icomoon.eot?4clkd#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?4clkd') format('truetype'),
+    url('fonts/icomoon.woff?4clkd') format('woff'),
+    url('fonts/icomoon.svg?4clkd#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,15 +25,18 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-cancel-circle:before {
+  content: "\e900";
+}
 .icon-calendar:before {
-  content: "\e953";
+  content: "\e901";
+}
+.icon-up:before {
+  content: "\e902";
+}
+.icon-selected:before {
+  content: "\e903";
 }
 .icon-eye:before {
   content: "\e9ce";
-}
-.icon-eye-blocked:before {
-  content: "\e9d1";
-}
-.icon-cancel-circle:before {
-  content: "\ea0d";
 }
