@@ -20,6 +20,7 @@ export default {
   },
   data() {
     return {
+      realValue: this.textValue,
     };
   },
   methods: {
@@ -27,17 +28,17 @@ export default {
       if (!this.isDisabled) {
          //多选
         if (this.multiple) {
-          if (this.textValue[this.value]) {
-            delete this.textValue[this.value];
+          if (this.realValue[this.value]) {
+            delete this.realValue[this.value];
           } else {
-            this.textValue[this.value] = this.label;
+            this.realValue[this.value] = this.label;
           }
         } else { //单选
-          this.textValue = {};
-          this.textValue[this.value] = this.label;
+          this.realValue = {};
+          this.realValue[this.value] = this.label;
         }
         //传值给Toselect
-        this.$emit("changeData", Object.keys(this.textValue));
+        this.$emit("changeData", Object.keys(this.realValue));
         //传值给select
         this.$emit("closeDown", false);
       }

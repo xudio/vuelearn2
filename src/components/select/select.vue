@@ -1,7 +1,7 @@
 <template>
   <div class="el-select">
     <div class="con-header" @mouseenter="mouseenter" @mouseleave="mouseleave" @click="openDown">
-      <div class="el-select-tags" ref="height">
+      <div class="el-select-tags" v-if="multiple" ref="height">
         <span class="el-tags" v-for="(value, key) in textValue" :key="key">
           <span class="tags-item">{{ value }}</span>
           <i class="icon-cancel-circle" :value="key" @click="cancel"></i>
@@ -88,7 +88,7 @@ export default {
         !this.multiple &&
         this.clearable &&
         this.isHover &&
-        this.textValue.length > 0
+        Object.keys(this.textValue).length > 0
       ) {
         return true;
       }
@@ -118,8 +118,9 @@ export default {
       this.isHover = false;
     },
     //清除输入框数据
-    clearData: function () {
+    clearData: function (e) {
       this.$emit("changeData", []);
+      e.stopPropagation();
     },
     //取消选择 
     cancel: function (event) {
@@ -136,8 +137,8 @@ export default {
     //
     let _this = this;
     document.addEventListener("click", (e) => {
-      if (!e.target.contains(_this.$refs.focusState)) {
-        //_this.isDown = false;
+      if (!_this.$el.contains(e.target)) {
+        _this.isDown = false;
       }
     });
   },
@@ -245,7 +246,7 @@ export default {
   transform: translate(-50%, -50%);
 }
 
-.icon-cancel-circle {
+.el-tags .icon-cancel-circle {
   position: absolute;
   top: 5px;
   right: 5px;
@@ -254,7 +255,7 @@ export default {
   border-radius: 50%;
 }
 
-.icon-cancel-circle:hover {
+.el-tags .icon-cancel-circle:hover {
   background: #909399;
   color: #fff;
 }
