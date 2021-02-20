@@ -8,7 +8,7 @@ import ToIndeterminate from '../components/checkbox/toIndeterminate.vue'
 import Toinput from '../components/input/toInput.vue'
 import ToinputNumber from '../components/input/toInputNumber.vue'
 import Toselect from '../components/select/toSelect.vue'
-
+import Tocascader from '../components/cascader/toCascader.vue'
 Vue.use(Router);
 
 export default new Router({
@@ -52,6 +52,11 @@ export default new Router({
             path: '/select',
             name: 'select',
             component: Toselect
+        },
+        {
+            path: '/cascader',
+            name: 'cascader',
+            component: Tocascader
         }
     ]
 })

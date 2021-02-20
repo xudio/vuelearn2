@@ -203,6 +203,10 @@ export default {
   top: 6px;
   content: '';
   background: $mainBackgroundColor;
+  border: 1px solid #fff;
+  border-left: 0;
+  border-top: 0;
+  transform:rotate(0deg) scaleY(1);
 }
 
 .small.el-checkbox {

@@ -67,7 +67,7 @@ export default {
   },
   computed: {
     textValue: function () {
-      //选中的值
+      //选中的值 拼接成对象
       let _this = this,
         obj = {};
 
@@ -99,12 +99,14 @@ export default {
     //监听头部div点击事件
     openDown: function () {
       this.isDown = !this.isDown;
+      this.visibleChange();
     },
     //监听option点击事件
     closeDown: function (val) {
       if (!this.multiple) {
         // 如果不是多选，则关闭下拉框
         this.isDown = val;
+        this.visibleChange();
       }
       //输入框聚焦
       this.$refs.focusState.focus();
@@ -129,6 +131,10 @@ export default {
       this.$emit("changeData", Object.keys(this.textValue));
       event.stopPropagation();
     },
+    //下拉框改变
+    visibleChange: function() {
+        this.$emit('visibleChange', this.isDown);
+    }
   },
   components: {
     VoptionGroup,
@@ -139,6 +145,7 @@ export default {
     document.addEventListener("click", (e) => {
       if (!_this.$el.contains(e.target)) {
         _this.isDown = false;
+        _this.visibleChange();
       }
     });
   },

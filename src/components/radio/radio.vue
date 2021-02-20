@@ -1,14 +1,20 @@
 <template>
-  <label class="el-radio" :class="[{'blue': checked}, {'border': border}, {[sizeName]: border}, {'disabled': disabled}]" 
+  <label
+    class="el-radio"
+    :class="[{ blue: checked }, { border: border }, { [sizeName]: border }, { disabled: disabled }]"
     :border="border"
-    :size="size">
-    <span class="input-radio" :class="[{'radio-blue': checked}, {'radio-disabled': disabled}]"></span>
-    <input class="el-input" type="radio" 
-    :name="name" 
-    :label="label" 
-    :value="value"
-    :disabled="disabled"
-    @input="input" />
+    :size="size"
+  >
+    <span class="input-radio" :class="[{ 'radio-blue': checked }, { 'radio-disabled': disabled }]"></span>
+    <input
+      class="el-input"
+      type="radio"
+      :name="name"
+      :label="label"
+      :value="value"
+      :disabled="disabled"
+      @input="input"
+    />
     {{ title }}
   </label>
 </template>
@@ -17,8 +23,8 @@
 export default {
   name: "Vradio",
   model: {
-    prop: 'value',
-    event: 'change'
+    prop: "value",
+    event: "change"
   },
   props: {
     title: {
@@ -44,14 +50,14 @@ export default {
       default: "middle"
     }
   },
-  data () {
+  data() {
     return {
       parent: this.$parent
-    }
+    };
   },
   methods: {
     input: function() {
-      this.$emit('change', this.label);
+      this.$emit("change", this.label);
     }
   },
   computed: {
@@ -73,7 +79,6 @@ export default {
 .el-radio {
   position: relative;
   display: inline-block;
-  margin-left: 20px;
   font-size: $fontSize;
   color: $mainTextColor;
   cursor: pointer;
